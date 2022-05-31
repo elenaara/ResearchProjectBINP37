@@ -111,23 +111,13 @@ parser.add_argument(                                                  # output
     type = str,
     dest = 'out',
     required = False,
-    default = 'plot',
+    default = 'output',
     help = 'Basename for output files. Default is "plot".'
     )
 
 
 args = parser.parse_args() 
 
-#%% TEST FILES
-"""
-ab1=pd.read_csv("C:/Users/earam/Desktop/cole/BINP37_SpringProj/SILVA_IMNGS/prob_brevs_sra.txt",header=None)
-ab2 = pd.read_csv("C:/Users/earam/Desktop/cole/BINP37_SpringProj/SILVA_IMNGS/arco_sra_unique.txt",header=None)
-inf1 = pd.read_csv("C:/Users/earam/Desktop/cole/BINP37_SpringProj/SILVA_IMNGS/prob_brevs_RunInfo.csv")
-inf2 = pd.read_csv("C:/Users/earam/Desktop/cole/BINP37_SpringProj/SILVA_IMNGS/arco_RunInfo.csv",dtype={'Subject_ID':'str','Body_Site':'str'})
-no_amp = False
-out_file = "AMP"
-plot_format = "pdf"
-"""
 #%% Read input
 
 # SRA number files
@@ -210,7 +200,7 @@ if no_amp == False:
 #FILTER OUT AMPLICON EXPERIMENTS
 if no_amp:
     inf1 = inf1.loc[inf1["LibraryStrategy"] != "AMPLICON"]
-    inf2 = inf2.loc[inf2["LibraryStrategy"] != "AMPLICON"]
+    #inf2 = inf2.loc[inf2["LibraryStrategy"] != "AMPLICON"]
     
     # Create df for counts
     # Get unique SRAs from ab1
